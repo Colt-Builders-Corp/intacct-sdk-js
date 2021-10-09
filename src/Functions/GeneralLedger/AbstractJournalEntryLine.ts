@@ -28,6 +28,7 @@ export default abstract class AbstractJournalEntryLine extends AbstractGlEntry {
     public exchangeRateDate: Date;
     public exchangeRateValue: number;
     public exchangeRateType: string;
+    public costTypeId: string;
 
     public abstract writeXml(xml: IaXmlWriter): void;
 }

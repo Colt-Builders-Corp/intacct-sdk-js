@@ -1,0 +1,71 @@
+"use strict";
+/**
+ * @module Intacct/SDK/Functions/InventoryControl
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+const AbstractItem_1 = require("./AbstractItem");
+class ItemCreate extends AbstractItem_1.default {
+    writeXml(xml) {
+        xml.writeStartElement("function");
+        xml.writeAttribute("controlid", this.controlId, true);
+        xml.writeStartElement("create");
+        xml.writeStartElement("ITEM");
+        xml.writeElement("ITEMID", this.itemId, true);
+        xml.writeElement("NAME", this.itemName, true);
+        xml.writeElement("ITEMTYPE", this.itemType, true);
+        if (this.active === true) {
+            xml.writeElement("STATUS", "active");
+        }
+        else if (this.active === false) {
+            xml.writeElement("STATUS", "inactive");
+        }
+        xml.writeElement("PRODUCTLINEID", this.produceLineId);
+        xml.writeElement("COST_METHOD", this.costMethod);
+        xml.writeElement("EXTENDED_DESCRIPTION", this.extendedDescription);
+        xml.writeElement("PODESCRIPTION", this.purchasingDescription);
+        xml.writeElement("SODESCRIPTION", this.salesDescription);
+        xml.writeElement("UOMGRP", this.unitOfMeasure);
+        xml.writeElement("NOTE", this.note);
+        xml.writeElement("SHIP_WEIGHT", this.shippingWeight);
+        xml.writeElement("GLGROUP", this.itemGlGroupName);
+        xml.writeElement("STANDARD_COST", this.standardCost);
+        xml.writeElement("BASEPRICE", this.basePrice);
+        xml.writeElement("TAXABLE", this.taxable);
+        xml.writeElement("TAXGROUP", this.itemTaxGroupName);
+        xml.writeElement("DEFAULTREVRECTEMPLKEY", this.defaultRevRecTemplateId);
+        xml.writeElement("INCOMEACCTKEY", this.revenueGlAccountNo);
+        xml.writeElement("INVACCTKEY", this.inventoryGlAccountNo);
+        xml.writeElement("EXPENSEACCTKEY", this.expenseGlAccountNo);
+        xml.writeElement("COGSACCTKEY", this.cogsGlAccountNo);
+        xml.writeElement("OFFSETOEGLACCOUNTKEY", this.arGlAccountNo);
+        xml.writeElement("OFFSETPOGLACCOUNTKEY", this.apGlAccountNo);
+        xml.writeElement("DEFERREDREVACCTKEY", this.deferredRevGlAccountNo);
+        xml.writeElement("VSOECATEGORY", this.vsoeCategory);
+        xml.writeElement("VSOEDLVRSTATUS", this.vsoeDefaultDeliveryStatus);
+        xml.writeElement("VSOEREVDEFSTATUS", this.vsoeDefaultDeferralStatus);
+        xml.writeElement("REVPOSTING", this.kitRevenuePosting);
+        xml.writeElement("REVPRINTING", this.kitPrintFormat);
+        xml.writeElement("SUBSTITUTEID", this.substituteItemId);
+        xml.writeElement("ENABLE_SERIALNO", this.serialTrackingEnabled);
+        xml.writeElement("SERIAL_MASKKEY", this.serialNumberMask);
+        xml.writeElement("ENABLE_LOT_CATEGORY", this.lotTrackingEnabled);
+        xml.writeElement("LOT_CATEGORYKEY", this.lotCategory);
+        xml.writeElement("ENABLE_BINS", this.binTrackingEnabled);
+        xml.writeElement("ENABLE_EXPIRATION", this.expTrackingEnabled);
+        xml.writeElement("UPC", this.upc);
+        xml.writeElement("INV_PRECISION", this.unitCostPrecisionInventory);
+        xml.writeElement("SO_PRECISION", this.unitCostPrecisionSales);
+        xml.writeElement("PO_PRECISION", this.unitCostPrecisionPurchasing);
+        xml.writeElement("HASSTARTENDDATES", this.itemStartEndDateEnabled);
+        xml.writeElement("TERMPERIOD", this.periodsMeasuredIn);
+        xml.writeElement("TOTALPERIODS", this.numberOfPeriods);
+        xml.writeElement("COMPUTEFORSHORTTERM", this.proratePriceAllowed);
+        xml.writeElement("RENEWALMACROID", this.defaultRenewalMacroId);
+        xml.writeCustomFieldsImplicit(this.customFields);
+        xml.writeEndElement(); // ITEM
+        xml.writeEndElement(); // create
+        xml.writeEndElement(); // function
+    }
+}
+exports.default = ItemCreate;
+//# sourceMappingURL=ItemCreate.js.map
