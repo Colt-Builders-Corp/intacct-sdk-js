@@ -66,6 +66,7 @@ export default class JournalEntryLineCreate extends AbstractJournalEntryLine {
             xml.writeElement("EMPLOYEEID", this.employeeId);
             xml.writeElement("ITEMID", this.itemId);
             xml.writeElement("CLASSID", this.classId);
+            xml.writeElement("COSTTYPEID", this.costTypeId);
             xml.writeElement("CONTRACTID", this.contractId);
             xml.writeElement("WAREHOUSEID", this.warehouseId);
         }
